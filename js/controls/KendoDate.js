@@ -1,10 +1,9 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'jquery', 'react', 'kendo',
-    '../util/debug',
     '../ControlCommon',
     '../ImmutableOptimizations'
-], function (_, $, React, kendo, debug, ControlCommon, ImmutableOptimizations) {
+], function (_, $, React, kendo, ControlCommon, ImmutableOptimizations) {
     'use strict';
 
 
@@ -35,7 +34,7 @@ define([
         /*jshint ignore:end */
 
         componentDidMount: function (rootNode) {
-            debug.verify(!!rootNode);
+            console.assert(!!rootNode);
 
             if (this.props.noControl) {
                 // Everything was done in JSX.
@@ -43,7 +42,7 @@ define([
             }
 
             var $el = $(rootNode);
-            debug.verify($el);
+            console.assert($el);
 
             $el.kendoDatePicker({
                 change: this.onChange,
@@ -57,7 +56,7 @@ define([
         },
 
         componentDidUpdate: function (prevProps, prevState, rootNode) {
-            debug.verify(!!rootNode);
+            console.assert(!!rootNode);
 
             if (this.props.noControl) {
                 // Everything was done in JSX.
@@ -65,7 +64,7 @@ define([
             }
 
             var $el = $(rootNode);
-            debug.verify($el);
+            console.assert($el);
 
             ControlCommon.setKendoDateState(
                 $el.data('kendoDatePicker'),

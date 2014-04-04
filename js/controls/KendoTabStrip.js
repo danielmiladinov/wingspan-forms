@@ -1,10 +1,9 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'jquery', 'react', 'kendo',
-    '../util/debug',
     '../ReactCommon',
     '../ImmutableOptimizations'
-], function (_, $, React, kendo, debug, ReactCommon, ImmutableOptimizations) {
+], function (_, $, React, kendo, ReactCommon, ImmutableOptimizations) {
     'use strict';
 
     void ReactCommon;
@@ -16,7 +15,7 @@ define([
         mixins: [ImmutableOptimizations],
 
         componentWillMount: function () {
-            debug.verify(_.isObject(this.props.tabs) && _.keys(this.props.tabs).length > 0);
+            console.assert(_.isObject(this.props.tabs) && _.keys(this.props.tabs).length > 0);
         },
 
         componentWillUnmount: function () {
@@ -24,7 +23,7 @@ define([
         },
 
         componentDidMount: function (rootNode) {
-            debug.verify(rootNode);
+            console.assert(rootNode);
             var $el = $(rootNode);
             $el.kendoTabStrip({
                 select: this.onSelect

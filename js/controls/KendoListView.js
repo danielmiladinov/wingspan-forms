@@ -2,9 +2,8 @@
 define([
     'underscore', 'jquery', 'react', 'kendo',
     '../util/kendoutil',
-    '../util/debug',
     '../ImmutableOptimizations'
-], function (_, $, React, kendo, kendoutil, debug, ImmutableOptimizations) {
+], function (_, $, React, kendo, kendoutil, ImmutableOptimizations) {
     'use strict';
 
     return React.createClass({
@@ -31,7 +30,7 @@ define([
         },
 
         componentWillMount: function () {
-            debug.verify(this.props.dataSource);
+            console.assert(this.props.dataSource);
         },
 
         /* jshint ignore:start */
@@ -93,7 +92,7 @@ define([
         },
 
         componentDidMount: function (rootNode) {
-            debug.verify(rootNode);
+            console.assert(rootNode);
             var $el = $(rootNode);
 
             var listView = $el.kendoListView({

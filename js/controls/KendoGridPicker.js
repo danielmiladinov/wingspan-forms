@@ -4,10 +4,9 @@ define([
     'jquery',
     'react',
     'kendo',
-    '../util/debug',
     '../util/util',
     '../ImmutableOptimizations'
-], function (_, $, React, kendo, debug, util, ImmutableOptimizations) {
+], function (_, $, React, kendo, util, ImmutableOptimizations) {
     'use strict';
 
     var KendoGridPicker = React.createClass({
@@ -28,15 +27,15 @@ define([
         },
 
         componentWillMount: function () {
-            debug.verify(this.props.dataSource);
-            debug.verify(this.props.columns);
-            debug.verify(this.props.multiSelect === true); // temporary simplification
-            debug.verify(_.isArray(this.props.value));
+            console.assert(this.props.dataSource);
+            console.assert(this.props.columns);
+            console.assert(this.props.multiSelect === true); // temporary simplification
+            console.assert(_.isArray(this.props.value));
         },
 
         componentWillReceiveProps: function (nextProps) {
             var cantChange = ['dataSource', 'editable', 'pageable'];
-            debug.verify(_.isEqual(_.pick(nextProps, cantChange), _.pick(this.props, cantChange)), 'these props cant change after mount');
+            console.assert(_.isEqual(_.pick(nextProps, cantChange), _.pick(this.props, cantChange)), 'these props cant change after mount');
         },
 
         /*jshint ignore:start */
@@ -46,7 +45,7 @@ define([
         /*jshint ignore:end */
 
         componentDidMount: function (rootNode) {
-            debug.verify(!!rootNode);
+            console.assert(!!rootNode);
             this.$el = $(rootNode);
 
             var columns = [{ title: '', template: kendo.template(KendoGridPickerTemplate), width: 34 }];
@@ -77,7 +76,7 @@ define([
         },
 
         componentDidUpdate: function (prevProps, prevState, rootNode) {
-            debug.verify(rootNode);
+            console.assert(rootNode);
             this.$el = $(rootNode);
 
             this.applySelectionStateToDom();

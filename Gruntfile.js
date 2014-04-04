@@ -72,7 +72,6 @@ module.exports = function (grunt) {
                     kendo: '../bower_components/kendo-ui/src/js/kendo.web',
                     moment: '../bower_components/momentjs/moment',
                     react: '../bower_components/react/react',
-                    stacktrace: '../bower_components/stacktrace/stacktrace',
                     almond: '../bower_components/almond/almond'
                 },
 
